@@ -1,6 +1,10 @@
 package racingcar.domain;
 
 public class MovePosition implements Comparable<MovePosition> {
+    private static final Integer DIVISION_NUMBER = 4;
+    private static final Integer MOVE_NUMBER = 1;
+    private static final String DASH = "-";
+    
     private final Integer position;
 
     private MovePosition(final Integer input) {
@@ -12,14 +16,14 @@ public class MovePosition implements Comparable<MovePosition> {
     }
 
     public MovePosition move(Integer input) {
-        if (input < 4) {
+        if (input < DIVISION_NUMBER) {
             return new MovePosition(position);
         }
-        return new MovePosition(position + 1);
+        return new MovePosition(position + MOVE_NUMBER);
     }
 
     public String resultPosition() {
-        return "-".repeat(position);
+        return DASH.repeat(position);
     }
 
     @Override

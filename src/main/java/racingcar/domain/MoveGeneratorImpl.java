@@ -8,6 +8,6 @@ public class MoveGeneratorImpl implements MoveGenerator {
 
     @Override
     public int generate() {
-        return Randoms.pickNumberInRange(MAX_NUMBER, MAX_NUMBER);
+        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 }

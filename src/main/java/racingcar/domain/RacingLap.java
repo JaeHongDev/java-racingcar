@@ -1,18 +1,31 @@
 package racingcar.domain;
 
 public class RacingLap {
-    private final Integer lap;
+    public static final String ERROR_INPUT_IS_NUMBER = "반복횟수는 숫자여야만 합니다.";
+    private static final Long ZERO = 0L;
+    private static final Long COUNT_NUMBER = 1L;
+
+    private final Long lap;
 
     public RacingLap(final String input) {
-        this.lap = Integer.parseInt(input);
+        validateInputIsNumber(input);
+        this.lap = Long.valueOf(input);
     }
 
-    private RacingLap(Integer lap) {
+    private RacingLap(Long lap) {
         this.lap = lap;
     }
 
     public static RacingLap generateReadyLapState() {
-        return new RacingLap(0);
+        return new RacingLap(ZERO);
+    }
+
+    private void validateInputIsNumber(String input) {
+        try {
+            Long.valueOf(input);
+        } catch (Exception exception) {
+            throw new IllegalArgumentException(ERROR_INPUT_IS_NUMBER);
+        }
     }
 
     public boolean isLessThan(RacingLap racingLap) {
@@ -20,6 +33,6 @@ public class RacingLap {
     }
 
     public RacingLap nextLap() {
-        return new RacingLap(lap + 1);
+        return new RacingLap(lap + COUNT_NUMBER);
     }
 }

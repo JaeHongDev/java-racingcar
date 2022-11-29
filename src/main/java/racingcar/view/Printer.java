@@ -18,4 +18,8 @@ public class Printer {
     protected void printlnError(Exception exception) {
         this.println(ERROR + exception.getMessage());
     }
+
+    protected void printlnError(StackOverflowError exception) {
+        this.println(ERROR + exception.getMessage());
+    }
 }

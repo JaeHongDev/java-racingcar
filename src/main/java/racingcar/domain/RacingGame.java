@@ -19,7 +19,7 @@ public class RacingGame {
     }
 
     public boolean runnable() {
-        return nowRacingLap.isLessThan(racingLap);
+        return this.nowRacingLap.isLessThan(racingLap);
     }
 
     public String getPlayWinner() {

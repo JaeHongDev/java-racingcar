@@ -13,6 +13,6 @@ public class OutputView extends Printer {
 
 
     public void printResult() {
-        this.println("최종 결과");
+        this.println("실행 결과");
     }
 }

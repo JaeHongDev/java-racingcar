@@ -10,17 +10,26 @@ public class RacingGameLauncher {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public RacingGameLauncher() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
+    public RacingGameLauncher(final InputView inputView, final OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void execute() {
+        try {
+            process();
+        } catch (IllegalStateException exception) {
+            // not doing
+        }
+    }
+
+    private void process() {
         var participants = inputView.readParticipants();
         var racingLap = inputView.readRacingLap();
         var racingGame = new RacingGame(participants, racingLap, new MoveMaker(new MoveGeneratorImpl()));
 
         outputView.printResult();
+
         while (racingGame.runnable()) {
             outputView.printLap(racingGame.goLap());
         }

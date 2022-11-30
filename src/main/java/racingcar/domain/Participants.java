@@ -10,7 +10,7 @@ public class Participants {
     public static final String ERROR_DID_NOT_PARTICIPANTS = "참여자가 존재하지 않습니다.";
     private static final String SPLIT_NAME_DELIMITER = ",";
     private static final String NEW_LINE_DELIMITER = "\n";
-    
+
     private final List<Car> participants;
 
     public Participants(String s) {
@@ -41,7 +41,7 @@ public class Participants {
                 .orElseThrow(() -> new IllegalStateException(ERROR_DID_NOT_PARTICIPANTS));
 
         return participants.stream()
-                .filter(car -> car.equals(maxPositionCar))
+                .filter(car -> car.compareTo(maxPositionCar) == 0)
                 .map(Car::getName)
                 .collect(Collectors.joining(SPLIT_NAME_DELIMITER));
     }

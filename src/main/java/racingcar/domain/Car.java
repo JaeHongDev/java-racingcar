@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Car implements Comparable<Car> {
+    public static final String ERROR_EMPTY_CAR_NAME = "자동차의 이름이 비어있을 수 없습니다.";
     public static final String ERROR_CAR_NAME_SIZE = "자동차의 이름은 최소한 1글자 이상이여야 합니다.";
     public static final String ERROR_CAR_NAME = "자동차의 이름은 5글자를 넘길 수 없습니다.";
     private static final String RESULT_FORMAT = "%s : %s";
@@ -11,11 +12,18 @@ public class Car implements Comparable<Car> {
     private MovePosition movePosition;
 
     public Car(final String input) {
+        validateNameIsEmpty(input);
         validateNameIsGreaterThanMinNumber(input.length());
         validateNameIsLessThanMaxNumber(input.length());
 
         this.movePosition = MovePosition.generateZeroPosition();
         this.name = input;
+    }
+
+    private void validateNameIsEmpty(String input) {
+        if (input.isEmpty() || input.isBlank()) {
+            throw new IllegalArgumentException(ERROR_EMPTY_CAR_NAME);
+        }
     }
 
     private void validateNameIsLessThanMaxNumber(final Integer size) {
@@ -48,4 +56,5 @@ public class Car implements Comparable<Car> {
     public String getName() {
         return this.name;
     }
+
 }

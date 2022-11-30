@@ -10,6 +10,7 @@ public class Participants {
     public static final String ERROR_DID_NOT_PARTICIPANTS = "참여자가 존재하지 않습니다.";
     private static final String SPLIT_NAME_DELIMITER = ",";
     private static final String NEW_LINE_DELIMITER = "\n";
+    
     private final List<Car> participants;
 
     public Participants(String s) {

@@ -3,7 +3,7 @@ package racingcar.domain;
 public class Car implements Comparable<Car> {
     public static final String ERROR_CAR_NAME_SIZE = "자동차의 이름은 최소한 1글자 이상이여야 합니다.";
     public static final String ERROR_CAR_NAME = "자동차의 이름은 5글자를 넘길 수 없습니다.";
-
+    private static final String RESULT_FORMAT = "%s : %s";
     private static final Integer MAX_SIZE = 5;
     private static final Integer MIN_SIZE = 1;
 
@@ -37,7 +37,7 @@ public class Car implements Comparable<Car> {
     }
 
     private String result() {
-        return this.name + " : " + movePosition.resultPosition();
+        return String.format(RESULT_FORMAT, this.name, movePosition.resultPosition());
     }
 
     @Override

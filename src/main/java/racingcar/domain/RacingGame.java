@@ -2,15 +2,15 @@ package racingcar.domain;
 
 public class RacingGame {
     private final Participants participants;
-    private final RacingLap racingLap;
+    private final RacingLap lastRacingLap;
     private final MoveMaker moveMaker;
     private RacingLap nowRacingLap;
 
-    public RacingGame(Participants participants, RacingLap racingLap, MoveMaker moveMaker) {
+    public RacingGame(Participants participants, RacingLap lastRacingLap, MoveMaker moveMaker) {
         this.participants = participants;
-        this.racingLap = racingLap;
-        this.nowRacingLap = RacingLap.generateReadyLapState();
+        this.lastRacingLap = lastRacingLap;
         this.moveMaker = moveMaker;
+        this.nowRacingLap = RacingLap.generateReadyLapState();
     }
 
     public String goLap() {
@@ -19,7 +19,7 @@ public class RacingGame {
     }
 
     public boolean runnable() {
-        return this.nowRacingLap.isLessThan(racingLap);
+        return this.nowRacingLap.isLessThan(lastRacingLap);
     }
 
     public String getPlayWinner() {
